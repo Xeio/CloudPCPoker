@@ -2,7 +2,7 @@
     "compilerOptions": {
         "module": "None",
         "lib": ["DOM", "ES2023"],
-        "outFile": "./../../extension/dst/inject.js",
+        "outFile": "./../../extension/dst/popup.js",
         "noFallthroughCasesInSwitch": true,
         "removeComments": true,
         "noImplicitAny": true,

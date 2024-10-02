@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "manifest_version": 3,
   "description": "Pokes the Cloud PC to keep RDP session alive during work hours.",
-  "permissions": [ ],
+  "permissions": [
+    "storage"
+   ],
+  "action":{
+    "default_popup": "popup.html"
+  },
   "content_scripts": [
     {
       "matches": [

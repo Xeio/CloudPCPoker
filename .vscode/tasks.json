@@ -10,6 +10,24 @@
 				"$tsc-watch"
 			],
 			"group": "build",
+		},
+		{
+			"label": "watchPopup",
+			"type": "typescript",
+			"tsconfig": "src/popup/tsconfig.json",
+			"option": "watch",
+			"problemMatcher": [
+				"$tsc-watch"
+			],
+			"group": "build",
+		},
+		{
+			"label": "watchAll",
+			"dependsOn": ["watchInject", "watchPopup"],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
 		}
 	]
 }

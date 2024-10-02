@@ -35,32 +35,44 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-function fireKeyEvent() {
-    return __awaiter(this, void 0, void 0, function () {
-        var _a, startHour, endHour, currentHour, input, keyEvent;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
-                case 0: return [4, chrome.storage.local.get({ 'startHour': '6', 'endHour': '18' })];
-                case 1:
-                    _a = _b.sent(), startHour = _a.startHour, endHour = _a.endHour;
-                    currentHour = new Date().getHours();
-                    if (currentHour < startHour || currentHour > endHour)
-                        return [2];
-                    input = document.querySelector('#client-main-container > div:nth-child(1) > input[type=password]');
-                    if (!(input instanceof HTMLInputElement)) return [3, 3];
-                    keyEvent = new KeyboardEvent("keydown", {
-                        key: "ScrollLock",
-                        keyCode: 145
+window.onload = function () { return __awaiter(void 0, void 0, void 0, function () {
+    var _a, startHour, endHour, startOfDay, endOfDay;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0: return [4, chrome.storage.local.get({ 'startHour': '6', 'endHour': '18' })];
+            case 1:
+                _a = _b.sent(), startHour = _a.startHour, endHour = _a.endHour;
+                startOfDay = document.getElementById('startOfDay');
+                endOfDay = document.getElementById('endOfDay');
+                startOfDay.value = startHour;
+                endOfDay.value = endHour;
+                startOfDay.onchange = function () { return __awaiter(void 0, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                if (!(endOfDay.value != '')) return [3, 2];
+                                return [4, chrome.storage.local.set({ 'startHour': startOfDay.value })];
+                            case 1:
+                                _a.sent();
+                                _a.label = 2;
+                            case 2: return [2];
+                        }
                     });
-                    input.dispatchEvent(keyEvent);
-                    return [4, new Promise(function (i) { return setTimeout(i, 100); })];
-                case 2:
-                    _b.sent();
-                    input.dispatchEvent(keyEvent);
-                    _b.label = 3;
-                case 3: return [2];
-            }
-        });
+                }); };
+                endOfDay.onchange = function () { return __awaiter(void 0, void 0, void 0, function () {
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                if (!(endOfDay.value != '')) return [3, 2];
+                                return [4, chrome.storage.local.set({ 'endHour': endOfDay.value })];
+                            case 1:
+                                _a.sent();
+                                _a.label = 2;
+                            case 2: return [2];
+                        }
+                    });
+                }); };
+                return [2];
+        }
     });
-}
-setInterval(fireKeyEvent, 10 * 60 * 1000);
+}); };
