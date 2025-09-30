@@ -12,7 +12,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://windows365.microsoft.com/webclient/*"
+        "https://windows.cloud.microsoft/webclient/*"
       ],
       "all_frames" : true,
       "js": [
