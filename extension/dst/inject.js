@@ -4,7 +4,7 @@ async function fireKeyEvent() {
     const currentHour = new Date().getHours();
     if (currentHour < startHour || currentHour > endHour)
         return;
-    let input = document.querySelector('#client-main-container > div:nth-child(1) > input[type=password]');
+    let input = document.querySelector('#client-main-container #inputcontainer input[type=password]');
     if (input instanceof HTMLInputElement) {
         let keyEvent = new KeyboardEvent("keydown", {
             key: "ScrollLock",
