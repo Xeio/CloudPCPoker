@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "module": "None",
+        "target": "ES2023",
         "lib": ["DOM", "ES2023"],
         "outFile": "./../../extension/dst/popup.js",
         "noFallthroughCasesInSwitch": true,
