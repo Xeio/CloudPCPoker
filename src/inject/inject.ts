@@ -6,18 +6,28 @@ async function fireKeyEvent() {
     const currentHour = new Date().getHours()
     if(currentHour < startHour || currentHour > endHour) return;
 
-    let input = document.querySelector('#client-main-container #inputcontainer input[type=password]')
+    let input = document.querySelector('#client-main-container .globalcontainer input[type="password"]')
     if (input instanceof HTMLInputElement) {
-        let keyEvent = new KeyboardEvent("keydown", {
-            key: "ScrollLock",
-            keyCode: 145
-        })
+        let keyData: KeyboardEventInit = {
+            key: 'ScrollLock',
+            code: 'ScrollLock',
+            keyCode: 145,
+            which: 145,
+            bubbles: true,
+            cancelable: true
+        }
+        let keyDownEvent = new KeyboardEvent('keydown', keyData)
+        let keyUpEvent = new KeyboardEvent('keyup', keyData)
 
-        input.dispatchEvent(keyEvent)
-
+        input.dispatchEvent(keyDownEvent)
         await new Promise(i => setTimeout(i, 100))
+        input.dispatchEvent(keyUpEvent)
 
-        input.dispatchEvent(keyEvent)
+        await new Promise(i => setTimeout(i, 200))
+
+        input.dispatchEvent(keyDownEvent)
+        await new Promise(i => setTimeout(i, 100))
+        input.dispatchEvent(keyUpEvent)
     }
 }
 
